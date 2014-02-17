@@ -1,0 +1,4 @@
+Instalando o rails:
+	\curl -sSL https://get.rvm.io | bash -s stable --rails
+
+Lembrar de dar souce após a instalação
