@@ -1,2 +1,2 @@
-Troque para o branch unstable usando:
-	$ git checkout unstable
+Troque para o branch unstable usando :
+	$ git checkout unstable 
