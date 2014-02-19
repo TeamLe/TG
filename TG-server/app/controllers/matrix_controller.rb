@@ -2,7 +2,7 @@ class MatrixController < ApplicationController
 
 	def change
 	
-	color = "red"
+	color = "#ff0000"
 
 	if !params[:color].nil? && !params[:color].empty?
 		color = params[:color]
