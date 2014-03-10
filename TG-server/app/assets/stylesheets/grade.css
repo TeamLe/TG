@@ -1,0 +1,36 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Exo', sans-serif;
+	font-size: 20px;
+}
+
+.grade-container {
+	background-color: whitesmoke;
+	width: 100%;
+	overflow: auto;
+}
+
+.grade-item {
+	height: 40px;
+	float: left;
+	width: 20%;
+	position: relative;
+	color: black;
+}
+
+.status_approved {
+	background-color: YELLOWGREEN;
+}
+
+.status_enrolled {
+	background-color: KHAKI;
+}
+
+.status_failed {
+	background-color: FIREBRICK;
+}
+
+.status_none {
+	background-color: GAINSBORO;
+}
