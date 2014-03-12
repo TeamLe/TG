@@ -1,5 +1,5 @@
-$(document).ready(function() {
-	$(".grade-item").click(function(event) {
+$(function () {
+	$('body').on('click','.grade-item', function(event) {
 		var gradeId = objectIdForElementId($(this).attr("id"));
 		var gradeStatus = $(this).attr("status");
 
@@ -14,8 +14,39 @@ $(document).ready(function() {
 	});
 });
 
+$(document).ready(function() {
+	$('#button_create_grade').click(function() {
+		var fieldNewGradeName = $("#field_new_grade_name");
+
+		var newGradeName = fieldNewGradeName.val();
+
+		$.ajax({
+			url: 'grades.json',
+			type: 'post',
+			data: {grade:{name:newGradeName, status:"none"}},
+			success: function (data) {
+				addElementForGrade(data);
+			}
+		});
+	});
+
+
+});
+
+function addElementForGrade(grade) {
+	var elementId = elementIdForObjectIdWithName(grade.id, "grade", false);
+	var newClassName = "status_" + grade.status;
+
+	var htmlToAppend = '<div id="' + elementId + '" class="grade grade-item '+ newClassName+'">'+grade.name+'</div>';
+
+	$(".grade-container").append(htmlToAppend);
+
+
+
+};
+
 function updateElementWithGrade(grade) {
-	var elementId = elementIdForObjectIdWithName(grade.id, "grade");
+	var elementId = elementIdForObjectIdWithName(grade.id, "grade", true);
 
 	var elementBeingUpdated = $(elementId);
 
@@ -28,8 +59,12 @@ function updateElementWithGrade(grade) {
 
 };
 
-function elementIdForObjectIdWithName(objectId, name) {
-	var elementId = "#" + name + "_" + objectId;
+function elementIdForObjectIdWithName(objectId, name, hashtag) {
+	if (hashtag) {
+		var elementId = "#" + name + "_" + objectId;
+	} else {
+		var elementId = name + "_" + objectId;
+	}
 
 	return elementId;
 };
