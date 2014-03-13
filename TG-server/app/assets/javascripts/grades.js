@@ -1,20 +1,7 @@
-$(function () {
-	$('body').on('click','.grade-item', function(event) {
-		var gradeId = objectIdForElementId($(this).attr("id"));
-		var gradeStatus = $(this).attr("status");
-
-		$.ajax({
-			url: 'grades/' + gradeId + '/change.json',
-			type: 'put',
-			data: {grade:{ status: gradeStatus}},
-			success: function (data) {
-				updateElementWithGrade(data);
-			}
-		});
-	});
-});
-
 $(document).ready(function() {
+	eventsListener();
+
+
 	$('#button_create_grade').click(function() {
 		var fieldNewGradeName = $("#field_new_grade_name");
 
@@ -29,9 +16,25 @@ $(document).ready(function() {
 			}
 		});
 	});
-
-
 });
+
+function eventsListener() {
+	$('body').on('mousedown','.grade-item', mouseDownHandler);
+};
+
+function mouseDownHandler(event) {
+	var gradeId = objectIdForElementId($(this).attr("id"));
+	var gradeStatus = $(this).attr("status");
+
+	$.ajax({
+		url: 'grades/' + gradeId + '/change.json',
+		type: 'put',
+		data: {grade:{ status: gradeStatus}},
+		success: function (data) {
+			updateElementWithGrade(data);
+		}
+	});
+};
 
 function addElementForGrade(grade) {
 	var elementId = elementIdForObjectIdWithName(grade.id, "grade", false);

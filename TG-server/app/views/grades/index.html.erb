@@ -23,8 +23,9 @@
     <% end %>
   </tbody>
 </table>
+</br>
 
-<div class="grade-container">
+<div class="grade-container" oncontextmenu="return false;">
   <% @grades.each do |grade| %>
     <%= div_for grade, :class => "grade-item status_#{grade.status}", status: grade.status do %>
       <%= grade.name %>
