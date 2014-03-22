@@ -1,5 +1,9 @@
-<h1>New syllabus</h1>
+<%= javascript_include_tag "syllabuses_new" %>
+
+<h1>Grade para o curso <%=@major.name if @major%></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', syllabuses_path %>
+<div id="syllabus-container"></div>
+
+<%= link_to 'Back', major_syllabuses_path %>

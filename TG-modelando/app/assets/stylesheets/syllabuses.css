@@ -1,0 +1,10 @@
+#syllabus-container {
+	width: 100%;
+	background-color: red;
+	display: table;
+}
+
+.course-container {
+	background-color: blue;
+	display: table-cell;
+}

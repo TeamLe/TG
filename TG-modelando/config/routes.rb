@@ -1,15 +1,18 @@
 Modelagem::Application.routes.draw do
+  resources :course_descriptions
+
+  get "course_descriptions/new"
+  get "course_descriptions/create"
+  get "course_descriptions/edit"
   resources :students
 
   resources :courses
 
-  resources :syllabuses
-
   resources :majors do
-    collection do
-      post 'upload'
-    end
+    resources :syllabuses
   end
+
+  resources :course_description
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

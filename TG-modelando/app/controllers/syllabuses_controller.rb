@@ -5,20 +5,29 @@ class SyllabusesController < ApplicationController
   # GET /syllabuses.json
   def index
     @syllabuses = Syllabus.all
+    @major = Major.find(params[:major_id])
   end
 
   # GET /syllabuses/1
   # GET /syllabuses/1.json
   def show
+    respond_to do |format|
+        format.json { render json: @syllabus, :include => { :courses => { :include => :course_description }}}
+    end
   end
 
   # GET /syllabuses/new
   def new
+    if (params[:major_id].present?)
+      @major = Major.find(params[:major_id])
+    end
+
     @syllabus = Syllabus.new
   end
 
   # GET /syllabuses/1/edit
   def edit
+    @major = Major.find(params[:major_id])
   end
 
   # POST /syllabuses
@@ -28,7 +37,7 @@ class SyllabusesController < ApplicationController
 
     respond_to do |format|
       if @syllabus.save
-        format.html { redirect_to @syllabus, notice: 'Syllabus was successfully created.' }
+        format.html { redirect_to majors_url, notice: 'Syllabus was successfully created.' }
         format.json { render action: 'show', status: :created, location: @syllabus }
       else
         format.html { render action: 'new' }

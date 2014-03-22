@@ -1,4 +1,4 @@
-<h1>Listing majors</h1>
+<h1>Listando curso</h1>
 
 <table>
   <thead>
@@ -11,20 +11,15 @@
 
   <tbody>
     <% @majors.each do |major| %>
-      <tr>
-        <td><%= link_to 'Show', major %></td>
-        <td><%= link_to 'Edit', edit_major_path(major) %></td>
-        <td><%= link_to 'Destroy', major, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%=major.name%></td>
+      <td><%= link_to 'Mostrar Curso', major %></td>
+      <td><%= link_to 'Editar Curso', edit_major_path(major) %></td>
+      <td><%= link_to 'Exluir Curso', major, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Nova Grade', new_major_syllabus_path(major) %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= form_tag({action: :upload}, multipart: true) do %>
-  <%= file_field_tag 'grade_xml' %>
-  <%= submit_tag("Search") %>
-<% end %>
-
-<br>
 
 <%= link_to 'New Major', new_major_path %>

@@ -1,4 +1,4 @@
-<%= form_for(@syllabus) do |f| %>
+<%= form_for([@major, @syllabus]) do |f| %>
   <% if @syllabus.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@syllabus.errors.count, "error") %> prohibited this syllabus from being saved:</h2>

@@ -12,9 +12,9 @@
   <tbody>
     <% @syllabuses.each do |syllabus| %>
       <tr>
-        <td><%= link_to 'Show', syllabus %></td>
-        <td><%= link_to 'Edit', edit_syllabus_path(syllabus) %></td>
-        <td><%= link_to 'Destroy', syllabus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', major_syllabus_path(@major, syllabus) %></td>
+        <td><%= link_to 'Edit', edit_major_syllabus_path(@major, syllabus) %></td>
+        <td><%= link_to 'Destroy', major_syllabus_path(@major, syllabus), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Syllabus', new_syllabus_path %>
+<%= link_to 'New Syllabus', new_major_syllabus_path(@major) %>

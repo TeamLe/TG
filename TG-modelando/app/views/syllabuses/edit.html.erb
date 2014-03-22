@@ -1,6 +1,10 @@
-<h1>Editing syllabus</h1>
+<%= javascript_include_tag "syllabuses_edit" %>
+<h1><%=@syllabus.name%></h1>
 
-<%= render 'form' %>
+<div id="syllabus-container"></div>
+<div style="clear:both"></div>
 
-<%= link_to 'Show', @syllabus %> |
-<%= link_to 'Back', syllabuses_path %>
+<%= hidden_field_tag 'major_id', @major.id %>
+<%= hidden_field_tag 'syllabus_id', @syllabus.id %>
+
+<%= link_to 'Back', major_syllabuses_path %>

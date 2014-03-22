@@ -61,15 +61,6 @@ class MajorsController < ApplicationController
     end
   end
 
-  def upload
-  uploaded_io = params[:grade_xml]
-  File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-    # file.write(uploaded_io.read)
-    puts file
-  end
-   render :nothing => true
-end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_major
@@ -78,6 +69,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def major_params
-      params[:major]
+      params[:major].permit(:name)
     end
 end
