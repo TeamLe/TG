@@ -9,7 +9,9 @@ Modelagem::Application.routes.draw do
   resources :courses
 
   resources :majors do
-    resources :syllabuses
+    resources :syllabuses do
+      put 'change'
+    end
   end
 
   resources :course_description

@@ -70,6 +70,59 @@ class SyllabusesController < ApplicationController
     end
   end
 
+  def change
+    operation = params[:operation]
+    course_id = params[:course_id]
+
+    @syllabus = Syllabus.find(params[:syllabus_id])
+    @major = Major.find(params[:major_id])
+    course = Course.find(course_id)
+
+    courses_same_period = @syllabus.courses.where('column == ?', course.column)
+
+    if operation.eql?('up')
+      new_row = course.row - 1
+
+      found_course_with_same_position = nil
+      courses_same_period.each  do |course_same_period|
+        if course_same_period.row.eql?(new_row)
+          found_course_with_same_position = course_same_period
+        end
+      end
+
+      if (!found_course_with_same_position.nil?)
+        found_course_with_same_position.row = new_row + 1
+        course.row = new_row
+        found_course_with_same_position.save
+        course.save
+      end
+
+
+    elsif operation.eql?('down')
+            new_row = course.row + 1
+
+      found_course_with_same_position = nil
+      courses_same_period.each  do |course_same_period|
+        if course_same_period.row.eql?(new_row)
+          found_course_with_same_position = course_same_period
+        end
+      end
+
+      if (!found_course_with_same_position.nil?)
+        found_course_with_same_position.row = new_row - 1
+        course.row = new_row
+        found_course_with_same_position.save
+        course.save
+      end
+    end
+
+    respond_to do |format|
+        format.json { render json: @syllabus, :include => { :courses => { :include => :course_description }}}
+    end
+
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_syllabus
@@ -78,6 +131,6 @@ class SyllabusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def syllabus_params
-      params[:syllabus]
+      params[:syllabus].permit(:operation)
     end
 end
