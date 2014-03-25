@@ -1,3 +1,4 @@
+<%= tabs %>
 <h1>Listando curso</h1>
 
 <table>
@@ -13,10 +14,10 @@
     <% @majors.each do |major| %>
     <tr>
       <td><%=major.name%></td>
-      <td><%= link_to 'Mostrar Curso', major %></td>
       <td><%= link_to 'Editar Curso', edit_major_path(major) %></td>
-      <td><%= link_to 'Exluir Curso', major, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Ver Grades', major_syllabuses_path(major) %></td>
       <td><%= link_to 'Nova Grade', new_major_syllabus_path(major) %></td>
+      <td><%= link_to 'Exluir Curso', major, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
   </tbody>

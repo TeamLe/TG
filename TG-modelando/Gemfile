@@ -40,6 +40,8 @@ gem 'jquery-turbolinks'
 
 gem 'symbolize'
 
+gem 'tabulous'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

@@ -1,3 +1,4 @@
+<%= tabs %>
 <h1>Listing students</h1>
 
 <table>
@@ -12,12 +13,7 @@
   <tbody>
     <% @students.each do |student| %>
       <tr>
-      <%= form_for @student, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "Create" %>
-<% end %>
-        <td>nome:<%= student.name %></td>
-        <td><%= link_to 'Show', student %></td>
+        <td>nome: <%= student.name %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

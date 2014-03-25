@@ -35,6 +35,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colored (1.2)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -98,6 +99,9 @@ GEM
     symbolize (4.4.1)
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    tabulous (2.1.0)
+      colored (~> 1.2.0)
+      rails (>= 3.0, < 4.1.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -128,6 +132,7 @@ DEPENDENCIES
   sdoc
   sqlite3
   symbolize
+  tabulous
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)

@@ -1,6 +1,14 @@
+	$(document).on('click', '.button-up', function() {
+		var courseId = $(this).attr('course_id');
+		changeCourseWithId(courseId, 'up');
+	});
+
+	$(document).on('click', '.button-down', function() {
+		var courseId = $(this).attr('course_id');
+		changeCourseWithId(courseId, 'down');
+	});
 $(function () {
 
-	registerEvents();
 
 	var syllabusId = $('#syllabus_id').val();
 	var majorId = $('#major_id').val();
@@ -17,15 +25,7 @@ $(function () {
 });
 
 function registerEvents() {
-	$(document).on('click', '.button-up', function() {
-		var courseId = $(this).attr('course_id');
-		changeCourseWithId(courseId, 'up');
-	});
 
-	$(document).on('click', '.button-down', function() {
-		var courseId = $(this).attr('course_id');
-		changeCourseWithId(courseId, 'down');
-	});
 };
 
 function changeCourseWithId(courseId, operation) {
