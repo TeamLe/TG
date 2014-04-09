@@ -61,7 +61,8 @@ function loadChart1(){
  
         }, {
             name: 'Alunos Reprovados',
-            data: failedArray
+            data: failedArray,
+            color: '#DD4B39'
         }]
 
 
@@ -135,9 +136,6 @@ function loadChart3(){
         },
         credits: {
             enabled: false
-        },
-        subtitle: {
-            text: 'Clique na coluna para ver semestres anteriores.'
         },
         title: {
             text: 'Matriculados por Disciplina'

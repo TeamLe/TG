@@ -14,7 +14,6 @@
     <% @syllabuses.each do |syllabus| %>
       <tr>
         <td><%=syllabus.name%></td>
-        <td><%= link_to 'Show', major_syllabus_path(@major, syllabus) %></td>
         <td><%= link_to 'Edit', edit_major_syllabus_path(@major, syllabus) %></td>
         <td><%= link_to 'Destroy', major_syllabus_path(@major, syllabus), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
